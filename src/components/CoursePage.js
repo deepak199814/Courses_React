@@ -10,10 +10,11 @@ export default function Coursepage() {
     getCourses().then((_courses) => setCourses(_courses));
   }, []);
 
-  return <CourseList courses={courses} />;
+  return <CourseList courses={courses} />; //passing props to child component.
 }
 
 /*
+Before splitting Course List page
 // import React from "react";
 // import { getCourses } from "../api/courseApi";
 

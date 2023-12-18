@@ -25,6 +25,8 @@ export default function CourseList(props) {
     </table>
   );
 }
+
+//It is only check in dev environment for optimaztion don't work in prod environment
 CourseList.propTypes = {
   courses: PropTypes.arrayOf(
     PropTypes.shape({
