@@ -16,6 +16,7 @@ export default function App() {
         <Route path="/courses" component={Coursepage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/course/:slug" component={ManageCoursePage} />
+        <Route path="/course" component={ManageCoursePage} />
         <Redirect from="/about-page" to="/about" />
         <Route component={NotFoundPage} />{" "}
         {/* Not found should be in last beacuse <switch> tag will stop once if it found match*/}
