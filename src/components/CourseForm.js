@@ -1,21 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+import TextInput from "./TextInput";
 
 export default function CourseForm(props) {
   return (
-    <form>
-      <div className="form-group">
-        <label htmlFor="title">Title</label>
-        <div className="field">
-          <input
-            id="title"
-            type="text"
-            onChange={props.onChange}
-            name="title"
-            className="form-control"
-            value={props.course.title}
-          />
-        </div>
-      </div>
+    <form onSubmit={props.onSubmit}>
+      <TextInput
+        id="title"
+        label="Title"
+        name="title"
+        onChange={props.onChange}
+        value={props.course.title}
+        error={props.error.title}
+      />
+
       <div className="form-group">
         <label htmlFor="author">Author</label>
         <div className="field">
@@ -31,22 +30,28 @@ export default function CourseForm(props) {
             <option value="2">David </option>
           </select>
         </div>
+        {props.error.authorId && (
+          <div className="alert alert-danger">{props.error.authorId}</div>
+        )}
       </div>
-      <div className="form-group">
-        <label htmlFor="category">Category</label>
-        <div className="field">
-          <input
-            id="category"
-            type="text"
-            onChange={props.onChange}
-            name="category"
-            className="form-control"
-            value={props.course.category}
-          />
-        </div>
-      </div>
+
+      <TextInput
+        id="category"
+        label="Category"
+        name="category"
+        onChange={props.onChange}
+        value={props.course.category}
+        error={props.error.category}
+      />
 
       <input type="submit" value="save" className="btn btn-primary" />
     </form>
   );
 }
+
+CourseForm.propTypes = {
+  course: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.object.isRequired,
+};
