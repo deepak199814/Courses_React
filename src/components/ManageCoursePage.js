@@ -10,16 +10,25 @@ const ManageCoursePage = (props) => {
     authorId: null,
     category: "",
   });
-  function handleTitleChange(event) {
-    const updatedCourse = { ...course, title: event.target.value }; //1.copy course object and 2. set Title
-    //updatedCourse.title = event.target.value;
-    setCourse(updatedCourse);
+  // function handleChange(event) {
+  //   //1.copy course object[destructuring] and 2. set Name
+  //   const updatedCourse = {
+  //     ...course,
+  //     [event.target.name]: event.target.value,
+  //   };
+  //   setCourse(updatedCourse);
+  //After refactor below code-->
+  function handleChange(target) {
+    setCourse({
+      ...course,
+      [target.name]: target.value,
+    });
   }
   return (
     <>
       <Prompt when={true} message="Are you sure want to leave course block ?" />
       <h2>ManageCourse</h2>
-      <CourseForm course={course} onTitleChange={handleTitleChange} />
+      <CourseForm course={course} onChange={handleChange} />
       {/* <h5>Course Title is {props.match.params.slug}</h5>*/}
     </>
   );

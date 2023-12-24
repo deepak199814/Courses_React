@@ -9,7 +9,7 @@ export default function CourseForm(props) {
           <input
             id="title"
             type="text"
-            onChange={props.onTitleChange}
+            onChange={props.onChange}
             name="title"
             className="form-control"
             value={props.course.title}
@@ -35,9 +35,10 @@ export default function CourseForm(props) {
       <div className="form-group">
         <label htmlFor="category">Category</label>
         <div className="field">
-          <select
-            type="text"
+          <input
             id="category"
+            type="text"
+            onChange={props.onChange}
             name="category"
             className="form-control"
             value={props.course.category}
